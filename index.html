@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="form">
+        <div style="margin-bottom: 1rem">
+            <input type="text" name="text" value="text">
+        </div>
+        <div style="margin-bottom: 1rem">
+            <input type="email" name="email" value="email@email.com">
+        </div>
+        <div style="margin-bottom: 1rem">
+            <input type="number" name="number" value="464546542">
+        </div>
+        <div style="margin-bottom: 1rem">
+            <input type="tel" name="tel" value="1234567891">
+        </div>
+        <div style="margin-bottom: 1rem">
+            <input type="password" name="password" value="password">
+        </div>
+        <div style="margin-bottom: 1rem">
+            <input type="radio" name="radio" value="radio">
+        </div>
+        <div style="margin-bottom: 1rem">
+            <input type="checkbox" name="checkbox" value="checkbox">
+        </div>
+        <div style="margin-bottom: 1rem">
+            <input type="color" name="color" value="#d2d2d2">
+        </div>
+        <div style="margin-bottom: 1rem">
+            <input type="date" name="date" value="2022-02-18">
+        </div>
+        <div style="margin-bottom: 1rem">
+            <input type="datetime-local" name="datetime-local" value="2022-02-18T13:24">
+        </div>
+        <div style="margin-bottom: 1rem">
+            <input type="month" name="month" value="2022-02">
+        </div>
+        <div style="margin-bottom: 1rem">
+            <input type="url" name="url" value="https://boffinbrains.com">
+        </div>
+        <div style="margin-bottom: 1rem">
+            <input type="week" name="week" value="2022-W07">
+        </div>
+        <div style="margin-bottom: 1rem">
+            <input type="search" name="search" value="search@%">
+        </div>
+        <div style="margin-bottom: 1rem">
+            <input type="search" name="search" value="search">
+        </div>
+        <div style="margin-bottom: 1rem">
+            <textarea name="textarea">textarea 1</textarea>
+        </div>
+        <div style="margin-bottom: 1rem">
+            <textarea name="textarea">textarea 2</textarea>
+        </div>
+        <br>
+        <button type="button" id="formBtn">
+            Submit
+        </button>
+    </form>
+</body>
+<link rel="stylesheet" href="./validator.css">
+<script type="module" src="./validator.js"></script>
+<script>
+    // const validationParams = {
+    //     name: "",
+    //     type: "required",
+    //     size: 255,
+    //     min: 0,
+    //     max: 255,
+    //     emailOnly: false,
+    //     numericOnly: false,
+    //     specialCharacters: true,
+    //     pattern: ""
+    // };
+    const validationRules = [
+        { name: "text", type: "nullable", min: 1, max: 40 },
+        { name: "email", type: "required", emailOnly: true },
+        { name: "number", type: "nullable", numericOnly: true, max: 10 },
+        { name: "tel", type: "nullable", min: 1, specialCharacters: false },
+        { name: "password", type: "nullable", },
+        { name: "radio", type: "nullable", },
+        { name: "checkbox", type: "nullable", },
+        { name: "color", type: "nullable", },
+        { name: "date", type: "nullable", },
+        { name: "datetime-local", type: "nullable", },
+        { name: "month", type: "nullable", },
+        { name: "url", type: "nullable", pattern: /^([a-z0-9]{5,})$/ },
+        { name: "week", type: "required", },
+        { name: "search", type: "nullable", specialCharacters: false },
+        { name: "textarea", type: "nullable", size: 255, }
+    ];
+</script>
+
+</html>
