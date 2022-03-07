@@ -25,3 +25,27 @@
     left: 12px;
     z-index: 1;
 }
+
+.validator-snackbar{
+    max-width: 300px;
+    position: fixed;
+    left: 50%;
+    display: inline-grid;
+    grid-auto-flow: column;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    box-shadow: 0px -2px 16px 0px #00000040;
+    font-family: 'Roboto';
+    padding: 1rem 1.2rem;
+    z-index: 10;
+    animation: topToBottom .3s ease-in-out .3s 1 both;
+}
+
+@keyframes topToBottom {
+    from {
+        top: -10%;
+    }
+    to {
+        top: 10%;
+    }
+}

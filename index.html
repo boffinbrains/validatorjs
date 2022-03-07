@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <title>Document</title>
+    <title>Validator JS</title>
 </head>
 
 <body>
@@ -27,31 +27,23 @@
             <input type="password" name="password" value="password">
         </div>
         <div style="margin-bottom: 1rem">
-            <input type="radio" name="radio" value="radio">
+            <input type="radio" name="radio" value="radio1" checked>
+            <input type="radio" name="radio" value="radio2">
         </div>
         <div style="margin-bottom: 1rem">
-            <input type="checkbox" name="checkbox" value="checkbox">
+            <input type="checkbox" name="checkbox" value="checkbox1" checked>
+            <input type="checkbox" name="checkbox" value="checkbox2" checked>
+            <input type="checkbox" name="checkbox" value="checkbox3">
+            <input type="checkbox" name="checkbox" value="checkbox4">
         </div>
         <div style="margin-bottom: 1rem">
-            <input type="color" name="color" value="#d2d2d2">
-        </div>
-        <div style="margin-bottom: 1rem">
-            <input type="date" name="date" value="2022-02-18">
-        </div>
-        <div style="margin-bottom: 1rem">
-            <input type="datetime-local" name="datetime-local" value="2022-02-18T13:24">
-        </div>
-        <div style="margin-bottom: 1rem">
-            <input type="month" name="month" value="2022-02">
+            <input type="date" name="date" value="2022-03-03">
         </div>
         <div style="margin-bottom: 1rem">
             <input type="url" name="url" value="https://boffinbrains.com">
         </div>
         <div style="margin-bottom: 1rem">
-            <input type="week" name="week" value="2022-W07">
-        </div>
-        <div style="margin-bottom: 1rem">
-            <input type="search" name="search" value="search@%">
+            <input type="search" name="search" value="search">
         </div>
         <div style="margin-bottom: 1rem">
             <input type="search" name="search" value="search">
@@ -71,33 +63,22 @@
 <link rel="stylesheet" href="./validator.css">
 <script type="module" src="./validator.js"></script>
 <script>
-    // const validationParams = {
-    //     name: "",
-    //     type: "required",
-    //     size: 255,
-    //     min: 0,
-    //     max: 255,
-    //     emailOnly: false,
-    //     numericOnly: false,
-    //     specialCharacters: true,
-    //     pattern: ""
-    // };
+    let fromDate = new Date().toISOString().slice(0, 10); // Current Date in Y-m-d format
+    let date = new Date();
+    let toDate = new Date(date.setDate(date.getDate() + 7)).toISOString().slice(0, 10); // Current Date + 7 days in Y-m-d format
+    let urlRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
     const validationRules = [
-        { name: "text", type: "nullable", min: 1, max: 40 },
+        { name: "text", type: "nullable", minlength: 1, maxlength: 40 },
         { name: "email", type: "required", emailOnly: true },
-        { name: "number", type: "nullable", numericOnly: true, max: 10 },
-        { name: "tel", type: "nullable", min: 1, specialCharacters: false },
+        { name: "number", type: "nullable", numericOnly: true, maxlength: 10 },
+        { name: "tel", type: "nullable", minlength: 1, numericOnly: true, },
         { name: "password", type: "nullable", },
-        { name: "radio", type: "nullable", },
-        { name: "checkbox", type: "nullable", },
-        { name: "color", type: "nullable", },
-        { name: "date", type: "nullable", },
-        { name: "datetime-local", type: "nullable", },
-        { name: "month", type: "nullable", },
-        { name: "url", type: "nullable", pattern: /^([a-z0-9]{5,})$/ },
-        { name: "week", type: "required", },
+        { name: "radio", type: "required", },
+        { name: "checkbox", type: "required", min: 2, max: 3 },
+        { name: "date", type: "required", from: fromDate, to: toDate },
+        { name: "url", type: "nullable", pattern: urlRegex },
         { name: "search", type: "nullable", specialCharacters: false },
-        { name: "textarea", type: "nullable", size: 255, }
+        { name: "textarea", type: "nullable" }
     ];
 </script>
 
